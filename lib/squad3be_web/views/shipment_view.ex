@@ -11,12 +11,15 @@ defmodule Squad3beWeb.ShipmentView do
   end
 
   def render("shipment.json", %{shipment: shipment}) do
-    %{id: shipment.id,
+    %{
+      id: shipment.id,
       shipment_number: shipment.shipment_number,
       license_number: shipment.license_number,
       origin: shipment.origin,
       destination: shipment.destination,
       loading_date: shipment.loading_date,
-      status: shipment.status}
+      status: shipment.status,
+      transporter: shipment.transporter
+    }
   end
 end

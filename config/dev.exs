@@ -3,8 +3,8 @@ use Mix.Config
 # Configure your database
 config :squad3be, Squad3be.Repo,
   username: "postgres",
-  password: "sialex10",
-  database: "squad3be_dev",
+  password: "postgres",
+  database: "postgres",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

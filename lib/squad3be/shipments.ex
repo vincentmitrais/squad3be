@@ -38,7 +38,7 @@ defmodule Squad3be.Shipments do
   def get_shipment!(id), do: Repo.get!(Shipment, id)
 
   def get_shipment_by_number!(shipsment_number) do
-    Repo.get_by(Shipment, shipment_number: shipsment_number)
+    Repo.get_by!(Shipment, shipment_number: shipsment_number)
   end
 
   def allocate_tarnsporter(%Shipment{} = shipment, attrs) do

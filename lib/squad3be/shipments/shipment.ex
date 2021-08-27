@@ -9,6 +9,7 @@ defmodule Squad3be.Shipments.Shipment do
     field :origin, :string
     field :shipment_number, :string
     field :status, :string
+    field :transporter_name, :string
     belongs_to :driver, Squad3be.Drivers.Driver
 
     timestamps()
@@ -31,10 +32,8 @@ defmodule Squad3be.Shipments.Shipment do
   def transport_changeset(shipment, attrs) do
     shipment
     |> cast(attrs, [
-      :transporter_name,
-
+      :transporter_name
     ])
     |> validate_required([:transporter_name])
   end
-
 end
