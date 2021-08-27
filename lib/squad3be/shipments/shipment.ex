@@ -27,4 +27,14 @@ defmodule Squad3be.Shipments.Shipment do
     ])
     |> validate_required([:shipment_number, :license_number, :origin, :destination])
   end
+
+  def transport_changeset(shipment, attrs) do
+    shipment
+    |> cast(attrs, [
+      :transporter_name,
+
+    ])
+    |> validate_required([:transporter_name])
+  end
+
 end

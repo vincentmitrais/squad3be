@@ -33,6 +33,14 @@ defmodule Squad3beWeb.ShipmentController do
     end
   end
 
+  def update_transporter(conn, %{"shipment_number" => shipment_number, "shipment" => shipment_params}) do
+    shipment = Shipments.get_shipment_by_number!(shipment_number)
+
+    with {:ok, %Shipment{} = shipment} <- Shipments.allocate_tarnsporter(shipment, shipment_params) do
+      render(conn, "show.json", shipment: shipment)
+    end
+  end
+
   def delete(conn, %{"id" => id}) do
     shipment = Shipments.get_shipment!(id)
 

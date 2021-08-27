@@ -10,6 +10,7 @@ defmodule Squad3beWeb.Router do
     resources "/trucks", TruckController, except: [:new, :edit]
     resources "/drivers", DriverController, except: [:new, :edit]
     resources "/shipments", ShipmentController, except: [:new, :edit]
+    get "/shipments/update_transporter", ShipmentController, :implement, as: :implement
   end
 
   # Enables LiveDashboard only for development
