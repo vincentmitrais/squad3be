@@ -8,7 +8,9 @@ defmodule Squad3beWeb.Router do
   scope "/api", Squad3beWeb do
     pipe_through :api
     resources "/trucks", TruckController, except: [:new, :edit]
+    resources "/drivers", DriverController, except: [:new, :edit]
   end
+
 
   # Enables LiveDashboard only for development
   #
