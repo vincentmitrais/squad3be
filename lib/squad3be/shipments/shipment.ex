@@ -11,6 +11,7 @@ defmodule Squad3be.Shipments.Shipment do
     field :status, :string
     field :transporter_name, :string
     belongs_to :driver, Squad3be.Drivers.Driver
+    belongs_to :truck, Squad3be.Trucks.Truck
 
     timestamps()
   end
@@ -35,5 +36,14 @@ defmodule Squad3be.Shipments.Shipment do
       :transporter_name
     ])
     |> validate_required([:transporter_name])
+  end
+
+  def truck_driver_changeset(shipment, attrs) do
+    shipment
+    |> cast(attrs, [
+      :truck_id,
+      :driver_id
+    ])
+    |> validate_required([:truck_id, :driver_id])
   end
 end

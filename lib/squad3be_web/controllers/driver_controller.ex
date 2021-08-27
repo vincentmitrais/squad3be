@@ -6,6 +6,11 @@ defmodule Squad3beWeb.DriverController do
 
   action_fallback Squad3beWeb.FallbackController
 
+  def index(conn, %{"key" => key}) do
+    drivers = Drivers.list_drivers(key)
+    render(conn, "index.json", drivers: drivers)
+  end
+
   def index(conn, _params) do
     drivers = Drivers.list_drivers()
     render(conn, "index.json", drivers: drivers)

@@ -83,6 +83,16 @@ defmodule Squad3be.Shipments do
     |> Repo.update()
   end
 
+  def update_driver_and_truck(%Shipment{} = shipment, attrs) do
+    shipment
+    |> Shipment.truck_driver_changeset(attrs)
+    |> Repo.update()
+    |> case do
+      {:ok, shipment} -> Repo.preload(shipment, [:truck, :driver])
+      {:error, _} = changeset -> changeset
+    end
+  end
+
   @doc """
   Deletes a shipment.
 

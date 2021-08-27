@@ -21,6 +21,11 @@ defmodule Squad3be.Drivers do
     Repo.all(Driver)
   end
 
+  def list_drivers(key) do
+    like = "%#{key}%"
+    from(d in Driver, where: like(d.driver_name, ^key)) |> Repo.all()
+  end
+
   @doc """
   Gets a single driver.
 

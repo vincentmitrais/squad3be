@@ -6,6 +6,11 @@ defmodule Squad3beWeb.TruckController do
 
   action_fallback Squad3beWeb.FallbackController
 
+  def index(conn, %{"key" => key}) do
+    trucks = Trucks.list_trucks(key)
+    render(conn, "index.json", trucks: trucks)
+  end
+
   def index(conn, _params) do
     trucks = Trucks.list_trucks()
     render(conn, "index.json", trucks: trucks)

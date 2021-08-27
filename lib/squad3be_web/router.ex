@@ -11,6 +11,12 @@ defmodule Squad3beWeb.Router do
     resources "/drivers", DriverController, except: [:new, :edit]
     resources "/shipments", ShipmentController, except: [:new, :edit]
     put("/shipments/:shipment_number/update_transporter", ShipmentController, :update_transporter)
+
+    put(
+      "/shipments/:shipment_number/allocate_driver_truck",
+      ShipmentController,
+      :allocate_driver_and_truck
+    )
   end
 
   # Enables LiveDashboard only for development

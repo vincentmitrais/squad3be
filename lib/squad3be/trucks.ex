@@ -21,6 +21,11 @@ defmodule Squad3be.Trucks do
     Repo.all(Truck)
   end
 
+  def list_trucks(key) do
+    like = "%#{key}%"
+    from(t in Truck, where: like(t.license_number, ^like)) |> Repo.all()
+  end
+
   @doc """
   Gets a single truck.
 
